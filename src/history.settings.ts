@@ -148,7 +148,7 @@ export class HistorySettings {
                         historyPath,
                         '.history');
                     } else if (workspacefolder) {
-                        historyPath = path.join (
+                        historyPath = path.join ( 
                             historyPath,
                             '.history',
                             (historyWS && this.pathIsInside(workspacefolder.fsPath, historyWS.fsPath) ? '' : path.basename(workspacefolder.fsPath))
@@ -156,13 +156,21 @@ export class HistorySettings {
                     }
                 }
 
-            } else if (workspacefolder) {
-                // Save only files in workspace
-                absolute = false;
-                historyPath = path.join(
-                    workspacefolder.fsPath,
-                    '.history'
-                );
+            } else {
+                historyPath = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+                if (historyPath) {
+                    absolute = <boolean>config.get('absolute');
+                    historyPath = path.join (
+                        historyPath,
+                        '.history');
+                } else if (workspacefolder) {
+                    // Save only files in workspace
+                    absolute = false;
+                    historyPath = path.join(
+                        workspacefolder.fsPath,
+                        '.history'
+                    );
+                }
             }
         }
 

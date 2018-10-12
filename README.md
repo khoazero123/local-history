@@ -33,7 +33,7 @@ The files displayed depend on setting `local-history.maxDisplay` to see more, us
         "local-history.saveDelay":   0  // A delay in seconds to save file in local history. {0: no delay}
         "local-history.dateLocale":     // The locale to use when displaying date (e.g.: "fr-CH" or "en-GB" or ...)
 
-        "local-history.path":     // Specify another location for .history folder (null: use workspaceFolder)
+        "local-history.path":     // Specify another location for .history folder (null: use HOME directory)
             This settings must be an abolute path. You can also start your path with:
             ${workspaceFolder}: current workspace folder
                 e.g. ${workspaceFolder}/.vscode to save in each workspace folder .vscode/.history
